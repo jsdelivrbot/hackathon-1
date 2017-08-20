@@ -2,16 +2,38 @@
 <head>
 <title>teste</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+<link rel="stylesheet" href="/css/index.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+	.side-nav li.active {
+		background-color: transparent;
+	}
+</style>
 </head>
+
 <script language = "javascript" type = "text/javascript">
+
+var order
+
+var navigationFn = {
+    goToSection: function(id) {
+        $('html, body').animate({
+            scrollTop: $(id).offset().top
+        }, 0);
+    }
+}
 
 $.post("/", {load: "protocol1"}, function(data, status){
 	console.log("Data: " + data + "\nStatus: " + status);
 	var text = ""
 	for (i in data[1]) {
-		text += data[1][i].html
+		text += '<div class="row"></div><!-- CARD: OVERVIEW --><div class="row">' + data[1][i].html + '</div>'
 	}
-	document.getElementById("testdiv").innerHTML=text;
+	document.getElementById("cardsView").innerHTML=text;
+	document.getElementById("sideBar").innerHTML=data[0];
+	order = data[2]
 	console.log(JSON.stringify(data))
 });
 
@@ -48,11 +70,75 @@ function check(x) {
 			});
 		}
 	}
+	//consertar ret
+	console.log(ret);
+
+	//mandar pro server (deu bom)
+	$.post("/", {depois: ret}, function(data, status){
+			console.log("Data: " + data + "\nStatus: " + status);
+			console.log(JSON.stringify(data))
+	});
+
+	console.log(order[Number(x)+1])
+	navigationFn.goToSection('#' +  order[Number(x)+1]);
 }
 
 </script>
 <body>
-<div id="testdiv">
+
+<header>
+<nav class="top-nav fixed">
+<div class="nav-wrapper teal">
+<a href="#" class="brand-logo center" style="font-size:3vmin;"><b>Pure Yield™ Plasmid Miniprep System</b></a>
+<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 </div>
+</nav>
+
+<div class="side-nav fixed grey-text text-darken-4" id="mobile-demo">
+<div class="row">
+<div class="col s12">
+<div class="row">
+</div>
+
+<!-- DYNAMIC DATA-->
+
+<ul class="collapsible z-depth-0" data-collapsible="expandable" style="border:0;" id="sideBar">
+
+</ul>
+</div>
+</div>
+</div>
+
+</header>
+
+<main>
+	<div class="row">
+		<!-- MAIN CONTENT -->
+		<div class="col s10 offset-s1 l7 offset-l4" id="cardsView">
+
+		</div>
+	</div>
+</main>
+
+<main>
+
+		<div class="row">
+
+			<!-- MAIN CONTENT -->
+
+			<div class="col s12 l9 offset-l3">
+
+			</div>
+
+		<!-- END MAIN CONTENT -->
+
+		</div>
+
+</main>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<script type="text/javascript" src="/javascript/index.js"></script>
+
 </body>
 </html>

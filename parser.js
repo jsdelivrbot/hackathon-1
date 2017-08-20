@@ -87,7 +87,7 @@ function parseProtocol(protocolName) {
 			else if (field.name == "equipaments") {
 				title = '<div class="card-content teal white-text"><div class="row"><div class="col s2 l1"><a class="btn-floating btn waves-effect waves-light white teal-text"><b>ii</b></a></div><div class="col s8 l10"><span class="card-title"><strong>Materials<strong></span></div></div></div>'
 				text = '<div id="equipaments" class="card">' + title + text + '</div>'
-				sideMenu += '<li><div class="collapsible-header" style="border:0"><div class="row"><div class="col s3"><a class="btn-floating btn waves-effect waves-light teal hoverable" href="#equipaments"><b>i</b></a></div><div class="col s8 offset-s1"><h5>Materials</h5></div></div></div></li>'
+				sideMenu += '<li><div class="collapsible-header" style="border:0"><div class="row"><div class="col s3"><a class="btn-floating btn waves-effect waves-light teal hoverable" href="#equipaments"><b>ii</b></a></div><div class="col s8 offset-s1"><h5>Materials</h5></div></div></div></li>'
 			}
 			cards.push({'title' : field.attributes.title, 'html' : text})
 			//cardsHTML.push(parseHTML(field))
