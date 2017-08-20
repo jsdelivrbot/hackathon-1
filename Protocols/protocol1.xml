@@ -17,9 +17,11 @@
 		<item type="line"></item>
 		<item type="check" id="checkbox-1" tagname="mandatory" amount="11ml">Cell Lysis Buffer (CLC) (Blue)</item>
 		<item type="check" id="checkbox-2" tagname="mandatory" amount="36ml">Neutralization Solution (NSC)</item>
-		<item type="check" id="checkbox-3" tagname="mandatory">Equipamento 3</item>
-		<item type="check" id="checkbox-4" tagname="mandatory">Equipamento 4</item>
-		<item type="check" id="checkbox-5" tagname="">Equipamento 5</item>
+		<item type="check" id="checkbox-3" tagname="mandatory" amount="20.5ml">Endotoxin Removal Wash (ERB)</item>
+		<item type="check" id="checkbox-4" tagname="mandatory" amount="9ml">Column Wash Solution (CWC)</item>
+		<item type="check" id="checkbox-5" tagname="mandatory" amount="10ml">Elution Buff er (EBB)</item>
+		<item type="check" id="checkbox-5" tagname="mandatory" amount="2x50">PureYieldTM Minicolumns</item>
+		<item type="check" id="checkbox-5" tagname="mandatory" amount="2x50">PureYieldTM Collection Tubes</item>
 		<item type="line"></item>
 		<item type="next">Next</item>
 	</equipaments>
@@ -28,8 +30,6 @@
 			<step number="1.1">
 				<item>Transfer 1.5ml of bacterial culture to a 1.5ml microcentrifuge tube.</item>
 				<item type="line"></item>
-				<item type="timer">Teste Timer</item>
-				<item type="warning">Teste Warning</item>
 				<item type="next">Next</item>
 			</step>
 			<step number="1.2">
