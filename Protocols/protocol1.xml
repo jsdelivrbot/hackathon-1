@@ -20,8 +20,8 @@
 		<item type="check" id="checkbox-3" tagname="mandatory" amount="20.5ml">Endotoxin Removal Wash (ERB)</item>
 		<item type="check" id="checkbox-4" tagname="mandatory" amount="9ml">Column Wash Solution (CWC)</item>
 		<item type="check" id="checkbox-5" tagname="mandatory" amount="10ml">Elution Buff er (EBB)</item>
-		<item type="check" id="checkbox-5" tagname="mandatory" amount="2x50">PureYieldTM Minicolumns</item>
-		<item type="check" id="checkbox-5" tagname="mandatory" amount="2x50">PureYieldTM Collection Tubes</item>
+		<item type="check" id="checkbox-6" tagname="mandatory" amount="2x50">PureYieldTM Minicolumns</item>
+		<item type="check" id="checkbox-7" tagname="mandatory" amount="2x50">PureYieldTM Collection Tubes</item>
 		<item type="line"></item>
 		<item type="next">Next</item>
 	</equipaments>
