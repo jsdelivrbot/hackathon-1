@@ -12,7 +12,7 @@ function parseHTML(field, cls, name) {
 		}
 		for (l in attributes) {
 			if (attributes[l] == "check") {
-				content = '<input class="' + cls + '" mandatory="' + field.children[k].attributes.mandatory + '" type="checkbox">' + content
+				content = '<input class="' + cls + '" tagname="' + field.children[k].attributes.mandatory + '" type="checkbox">' + content
 			}
 			if (attributes[l] == "video") {
 				content = '<iframe width="560" height="315" src="' + content + '" frameborder="0" allowfullscreen></iframe>'
@@ -21,10 +21,10 @@ function parseHTML(field, cls, name) {
 				content = '<a href="' + field.children[k].attributes.link + '">' + content + '</a>'
 			}
 			if (attributes[l] == "file") {
-				content = content + ': <input class="' + cls + '" mandatory="' + field.children[k].attributes.mandatory + '" type="file">'
+				content = content + ': <input class="' + cls + '" tagname="' + field.children[k].attributes.mandatory + '" type="file">'
 			}
 			if (attributes[l] == "text") {
-				content = content + ': <input class="' + cls + '" mandatory="' + field.children[k].attributes.mandatory + '" type="text">'
+				content = content + ': <input class="' + cls + '" tagname="' + field.children[k].attributes.mandatory + '" type="text">'
 			}
 		}
 		htmlCard += content + '</br>\n';
