@@ -1,28 +1,43 @@
 <html>
 <head>
-  <title>teste</title>
+<title>teste</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 <script language = "javascript" type = "text/javascript">
 
 function check(x) {
-  var lista = document.getElementsByName(x);
-  for (var i = 0; i < lista.length; i++) {
-    if (lista[i].type == "checkbox") {
-      if (!lista[i].checked) return;
-    }
-    else if (lista[i].type == "text") {
-      if (!lista[i].value) return;
-    }
-    else if (lista[i].type == "file") {
-      if (lista[i].value == "") return;
-    }
-  }
-  
-  //mandar pro server (deu bom)
-  $.post("/", {suggest: "test"}, function(data, status){
-        console.log("Data: " + data + "\nStatus: " + status);
-    });
+	var lista = document.getElementsByName(x);
+
+	var ret = [];
+	for (var i = 0; i < lista.length; i++) {
+		if (lista[i].type == "checkbox") {
+			if (!lista[i].checked) return;
+		}
+		else if (lista[i].type == "text") {
+			if (!lista[i].value) return;
+			ret.push(lista[i].value);
+		}
+		else if (lista[i].type == "file") {
+			if (lista[i].value == "") return;
+			
+			var file = lista[i];
+
+			if (file.files.length) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					ret.push(e.target.result);
+				};
+				reader.readAsBinaryString(file.files[0]);
+			}
+		}
+	}
+
+	console.log(ret);
+
+	//mandar pro server (deu bom)
+	$.post("/", {depois: ret}, function(data, status){
+			console.log("Data: " + data + "\nStatus: " + status);
+	});
 }
 
 </script>
