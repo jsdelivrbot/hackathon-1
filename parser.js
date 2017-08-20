@@ -1,11 +1,7 @@
 var fs = require('fs')
 var parse = require('xml-parser')
-var xml = fs.readFileSync('test.xml', 'utf8')
 var inspect = require('util').inspect
- 
-var obj = parse(xml)
 
-//Function that creates HTML card from JSON info
 function parseHTML(field) {
 	var htmlCard = ""
 	for (k in field.children) {
@@ -31,22 +27,36 @@ function parseHTML(field) {
 	return '<form>\n' + htmlCard + '<input type="submit" value="Próximo"></br>\n</form>\n';
 }
 
-//storing cards
-var cards = []
+function parseProtocol(protocolName) {
+	var xml = fs.readFileSync('Protocols/' + protocolName + ".xml", 'utf8')
+	 
+	var obj = parse(xml)
 
-//parse cards from xml
-for (i in obj.root.children) {
-	var field = obj.root.children[i]
-	if (field.name == "steps") {
-		for (j in field.children) {
-			cards.push({'number' : field.children[j].attributes.number, 'title' : field.children[j].attributes.title, 'html' : parseHTML(field.children[j])})
-			//cardsHTML.push(parseHTML(field.children[j]))
+	//storing cards
+	var cards = []
+
+	//parse cards from xml
+	for (i in obj.root.children) {
+		var field = obj.root.children[i]
+		if (field.name == "steps") {
+			for (j in field.children) {
+				cards.push({'number' : field.children[j].attributes.number, 'title' : field.children[j].attributes.title, 'html' : parseHTML(field.children[j])})
+				//cardsHTML.push(parseHTML(field.children[j]))
+			}
+		}
+		else {
+			cards.push({'title' : field.attributes.title, 'html' : parseHTML(field)})
+			//cardsHTML.push(parseHTML(field))
 		}
 	}
-	else {
-		cards.push({'title' : field.attributes.title, 'html' : parseHTML(field)})
-		//cardsHTML.push(parseHTML(field))
-	}
+
+	console.log(cards)
+	return cards
 }
 
-console.log(cards)
+module.exports = {
+	parseHTML : parseHTML,
+	parseProtocol : parseProtocol
+}
+
+parseProtocol("protocol1")
