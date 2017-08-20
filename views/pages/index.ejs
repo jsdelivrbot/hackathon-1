@@ -15,18 +15,20 @@ $.post("/", {load: "protocol1"}, function(data, status){
 	console.log(JSON.stringify(data))
 });
 
+function hasClass(element, cls) {
+    return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+}
+
 function check(x) {
 	var lista = document.getElementsByClassName(x);
 
 	var ret = [];
 	for (var i = 0; i < lista.length; i++) {
-		console.log(lista[i].mandatory);
-		if (lista[i].mandatory != "true") continue;
 		if (lista[i].type == "checkbox") {
-			if (!lista[i].checked) return;
+			if (!lista[i].checked && hasClass(lista[i], "mandatory")) return;
 		}
 		else if (lista[i].type == "file") {
-			if (lista[i].value == "") return;
+			if (lista[i].value == "" && hasClass(lista[i], "mandatory")) return;
 			
 			var file = lista[i];
 
@@ -40,7 +42,7 @@ function check(x) {
 			}
 		}
 		else if (lista[i].type == "text") {
-			if (!lista[i].value) return;
+			if (!lista[i].value && hasClass(lista[i], "mandatory")) return;
 			ret.push({b : lista[i].value});
 		}
 	}
