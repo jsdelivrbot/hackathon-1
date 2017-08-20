@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project title="Título do Protocolo">
 	<info title="Título do Protocolo">
-		<item type="video">video link</item>
+		<item type="video">https://www.youtube.com/embed/s86-Z-CbaHA</item>
 	</info>
 	<equipaments title="Equipamentos">
 		<item type="check">Equipamento 1</item>
@@ -20,6 +20,8 @@
 		</step>
 		<step number="1.C" title="Nome Passo 3">
 			<item>Descrição Passo 3</item>
+			<item type="file">File Passo 3</item>
+			<item type="text">Text Passo 3</item>
 		</step>
 		<step number="2" title="Nome Passo 4">
 			<item>Descrição Passo 4</item>

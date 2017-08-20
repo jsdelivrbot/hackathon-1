@@ -16,7 +16,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.post('/', function(request, response) {
-	response.send(request.body)
+	console.log(request.body)
 	if (request.body.hasOwnProperty("load")) {
 		response.send(parser.parseProtocol(request.body.load))
 	}
@@ -32,4 +32,4 @@ app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'))
 })
 
-parser.parseProtocol("protocol1")
+//parser.parseProtocol("protocol1")

@@ -5,8 +5,18 @@
 </head>
 <script language = "javascript" type = "text/javascript">
 
+$.post("/", {load: "protocol1"}, function(data, status){
+	console.log("Data: " + data + "\nStatus: " + status);
+	var text = ""
+	for (i in data) {
+		text += data[i].html
+	}
+	document.getElementById("testdiv").innerHTML=text;
+	console.log(JSON.stringify(data))
+});
+
 function check(x) {
-	var lista = document.getElementsByName(x);
+	var lista = document.getElementsByClassName(x);
 
 	var ret = [];
 	for (var i = 0; i < lista.length; i++) {
@@ -31,59 +41,19 @@ function check(x) {
 			}
 		}
 	}
-
+	//consertar ret
 	console.log(ret);
 
 	//mandar pro server (deu bom)
-	$.post("/", {load: ret}, function(data, status){
+	$.post("/", {depois: ret}, function(data, status){
 			console.log("Data: " + data + "\nStatus: " + status);
+			console.log(JSON.stringify(data))
 	});
 }
 
 </script>
 <body>
-<form>
-<!--<iframe width="560" height="315" src="video link" frameborder="0" allowfullscreen></iframe></br>-->
-<input type="button" value="Começar"></br>
-</form>
-
-<form>
-<input name = "0" type="checkbox">Equipamento 1</br>
-<input name = "0" type="checkbox">Equipamento 2</br>
-<input name = "0" type="checkbox">Equipamento 3</br>
-<input name = "0" type="checkbox">Equipamento 4</br>
-<input name = "0" type="checkbox">Equipamento 5</br>
-<input type="button" value="Próximo" onclick = "check('0')"></br>
-</form>
-
-<form>
-Descrição Passo 1</br>
-<input name = "1" type="checkbox">checkbox 1</br>
-<input name = "1" type="checkbox">checkbox 2</br>
-<input name = "1" type="text">type something</br>
-<input name = "1" type="file">submit something</br>
-<input type="button" value="Próximo" onclick = "check('1')"></br>
-</form>
-
-<form>
-Descrição Passo 2</br>
-<input name = "2" type="checkbox">checkbox 1</br>
-<input name = "2" type="checkbox">checkbox 2</br>
-<input name = "2" type="text">type something</br>
-<input name = "2" type="file">submit something</br>
-<input type="button" value="Próximo" onclick = "check('2')""></br>
-</form>
-
-<form>
-Descrição Passo 3</br>
-<input type="button" value="Próximo" onclick = "check()"></br>
-</form>
-
-<form>
-Descrição Passo 4</br>
-<input type="button" value="Terminar" onclick = "check()"></br>
-</form>
-
-
+<div id="testdiv">
+</div>
 </body>
 </html>

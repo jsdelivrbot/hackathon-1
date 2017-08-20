@@ -2,7 +2,7 @@ var fs = require('fs')
 var parse = require('xml-parser')
 var inspect = require('util').inspect
 
-function parseHTML(field) {
+function parseHTML(field, cls, name) {
 	var htmlCard = ""
 	for (k in field.children) {
 		var content = field.children[k].content
@@ -12,7 +12,7 @@ function parseHTML(field) {
 		}
 		for (l in attributes) {
 			if (attributes[l] == "check") {
-				content = '<input type="checkbox">' + content + ''
+				content = '<input class="' + cls + '"type="checkbox">' + content + ''
 			}
 			if (attributes[l] == "video") {
 				content = '<iframe width="560" height="315" src="' + content + '" frameborder="0" allowfullscreen></iframe>'
@@ -20,11 +20,17 @@ function parseHTML(field) {
 			if (attributes[l] == "link") {
 				content = '<a href="' + field.children[k].attributes.link + '">' + content + '</a>'
 			}
+			if (attributes[l] == "file") {
+				content = '<input class="' + cls + '"type="file">' + content + ''
+			}
+			if (attributes[l] == "text") {
+				content = '<input class="' + cls + '"type="text">' + content + ''
+			}
 		}
 		htmlCard += content + '</br>\n';
 	}
 	//transform into form
-	return '<form>\n' + htmlCard + '<input type="submit" value="Próximo"></br>\n</form>\n';
+	return '<form>\n' + htmlCard + '<input type="button" value="Próximo" onclick="check(' +"'" + cls + "'" + ')"></br>\n</form>\n';
 }
 
 function parseProtocol(protocolName) {
@@ -36,16 +42,19 @@ function parseProtocol(protocolName) {
 	var cards = []
 
 	//parse cards from xml
+	var cls = 0
 	for (i in obj.root.children) {
 		var field = obj.root.children[i]
 		if (field.name == "steps") {
 			for (j in field.children) {
-				cards.push({'number' : field.children[j].attributes.number, 'title' : field.children[j].attributes.title, 'html' : parseHTML(field.children[j])})
+				cards.push({'number' : field.children[j].attributes.number, 'title' : field.children[j].attributes.title, 'html' : parseHTML(field.children[j], cls)})
+				cls++
 				//cardsHTML.push(parseHTML(field.children[j]))
 			}
 		}
 		else {
-			cards.push({'title' : field.attributes.title, 'html' : parseHTML(field)})
+			cards.push({'title' : field.attributes.title, 'html' : parseHTML(field, cls)})
+			cls++
 			//cardsHTML.push(parseHTML(field))
 		}
 	}
@@ -59,4 +68,4 @@ module.exports = {
 	parseProtocol : parseProtocol
 }
 
-parseProtocol("protocol1")
+//parseProtocol("protocol1")
