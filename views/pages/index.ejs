@@ -8,8 +8,8 @@
 $.post("/", {load: "protocol1"}, function(data, status){
 	console.log("Data: " + data + "\nStatus: " + status);
 	var text = ""
-	for (i in data) {
-		text += data[i].html
+	for (i in data[1]) {
+		text += data[1][i].html
 	}
 	document.getElementById("testdiv").innerHTML=text;
 	console.log(JSON.stringify(data))
