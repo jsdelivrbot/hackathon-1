@@ -33,16 +33,24 @@
 				<item type="next">Next</item>
 			</step>
 			<step number="1.2">
-				<item>Descrição Passo 2</item>
+				<item>Centrifuge at maximum speed in a microcentrifuge for 1 minute.</item>
+				<item type="line"></item>
+				<item type="warning">Start timer: 1 minute</item>
+				<item type="line"></item>
+				<item type="next">Next</item>
 			</step>
 			<step number="1.3">
-				<item>Descrição Passo 3</item>
+				<item>Remove and discard medium.</item>
+				<item type="line"></item>
+				<item type="next">Next</item>
 				<!--<item type="text">Text Passo 3</item>-->
 			</step>
 		</group>
 		<group number="2" title="Nome Passo 2">
 			<step number="2.1">
-				<item>Descrição Passo 4</item>
+				<item>Resuspend the cell pellet in 600μl of TE buffer or water.</item>
+				<item type="line"></item>
+				<item type="next">Next</item>
 			</step>
 		</group>
 		<group number="3" title="Nome Passo 2">

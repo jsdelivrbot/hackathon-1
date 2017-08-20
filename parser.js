@@ -70,7 +70,7 @@ function parseProtocol(protocolName) {
 				for (k in field.children[j].children) {
 					var value = field.children[j].children[k]
 					var number = value.attributes.number
-					var title = '<div class="card"><div class="card-content teal white-text"><div class="row"><div class="col s2 l1"><a class="btn-floating btn waves-effect waves-light white teal-text"><b>' + number + '</b></a></div><div class="col s6 l7"><span class="card-title"><strong>' + field.children[j].attributes.title + '<strong></span></div><div class="col s1"><i class="material-icons">add_a_photo</i></div><div class="col s1"><i class="material-icons">keyboard_voice</i></div><div class="col s1"><i class="material-icons">format_color_text</i></div><div class="col s1"><i class="material-icons">question_answer</i></div></div></div>'
+					var title = '<div id = "'+number+'"class="card"><div class="card-content teal white-text"><div class="row"><div class="col s2 l1"><a class="btn-floating btn waves-effect waves-light white teal-text"><b>' + number + '</b></a></div><div class="col s6 l7"><span class="card-title"><strong>' + field.children[j].attributes.title + '<strong></span></div><div class="col s1"><i class="material-icons">add_a_photo</i></div><div class="col s1"><i class="material-icons">keyboard_voice</i></div><div class="col s1"><i class="material-icons">format_color_text</i></div><div class="col s1"><i class="material-icons">question_answer</i></div></div></div>'
 					references.push(number)
 					cards.push({'number' : number, 'title' : field.children[j].attributes.title, 'html' : title + parseHTML(value, cls, number) + '</div>'})
 					cls+=1
