@@ -16,7 +16,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.post('/', function(request, response) {
-	console.log(request.body)
+	response.send(request.body)
 	if (request.body.hasOwnProperty("load")) {
 		response.send(parser.parseProtocol(request.body.load))
 	}
