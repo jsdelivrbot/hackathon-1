@@ -21,16 +21,16 @@ function parseHTML(field, cls, name) {
 				content = '<a href="' + field.children[k].attributes.link + '">' + content + '</a>'
 			}
 			if (attributes[l] == "file") {
-				content = '<input class="' + cls + '"type="file">' + content + ''
+				content = content + ': <input class="' + cls + '"type="file">'
 			}
 			if (attributes[l] == "text") {
-				content = '<input class="' + cls + '"type="text">' + content + ''
+				content = content + ': <input class="' + cls + '"type="text">'
 			}
 		}
 		htmlCard += content + '</br>\n';
 	}
 	//transform into form
-	return '<form>\n' + htmlCard + '<input type="button" value="Próximo" onclick="check(' +"'" + cls + "'" + ')"></br>\n</form>\n';
+	return '<form>\n' + htmlCard + '<input type="button" value="próximo" onclick="check(' +"'" + cls + "'" + ')"></br>\n</form>\n';
 }
 
 function parseProtocol(protocolName) {
