@@ -35,7 +35,7 @@ function check(x) {
 	console.log(ret);
 
 	//mandar pro server (deu bom)
-	$.post("/", {depois: ret}, function(data, status){
+	$.post("/", {load: ret}, function(data, status){
 			console.log("Data: " + data + "\nStatus: " + status);
 	});
 }
