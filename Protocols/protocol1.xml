@@ -10,14 +10,18 @@
 		<item type="line"></item>
 		<item type="video" tagname="">http://dngkkzi55e3lb.cloudfront.net/protocol/VPA1221/VPA1221_1303.mp4</item>
 		<item type="line"></item>
-		<item type="next">Iniciar</item>
+		<item type="next">Start</item>
 	</info>
 	<equipaments title="Equipamentos">
-		<item type="check" tagname="mandatory">Equipamento 1</item>
-		<item type="check" tagname="mandatory">Equipamento 2</item>
-		<item type="check" tagname="mandatory">Equipamento 3</item>
-		<item type="check" tagname="mandatory">Equipamento 4</item>
-		<item type="check" tagname="">Equipamento 5</item>
+		<item>Check if you have the following material:</item>
+		<item type="line"></item>
+		<item type="check" id="checkbox-1" tagname="mandatory" amount="11ml">Cell Lysis Buffer (CLC) (Blue)</item>
+		<item type="check" id="checkbox-2" tagname="mandatory" amount="36ml">Neutralization Solution (NSC)</item>
+		<item type="check" id="checkbox-3" tagname="mandatory">Equipamento 3</item>
+		<item type="check" id="checkbox-4" tagname="mandatory">Equipamento 4</item>
+		<item type="check" id="checkbox-5" tagname="">Equipamento 5</item>
+		<item type="line"></item>
+		<item type="next">Next</item>
 	</equipaments>
 	<steps>
 		<group number="1" title="Nome Passo 1">

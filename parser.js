@@ -18,7 +18,9 @@ function parseHTML(field, cls, id) {
 				content = '<div class="center-align"><a class="waves-effect waves-light btn" href="' + field.children[k].attributes.link + '">' + content + '</a></div>'
 			}	
 			if (attributes[l] == "check") {
-				content = '<input class="' + cls + ' ' + field.children[k].attributes.tagname + '" type="checkbox">' + content
+				//content = '<input class="' + cls + ' ' + field.children[k].attributes.tagname + '" type="checkbox">' + content
+				if (field.children[k].attributes.hasOwnProperty("amount")) content = '<div class="row"><div class="col s1"><input type="checkbox" class="filled-in ' + cls + ' ' + field.children[k].attributes.tagname + '" id="' + field.children[k].attributes.id + '"/><label for="' + field.children[k].attributes.id + '"></div><div class="col s1">' + field.children[k].attributes.amount + '</div><div class="col s10">' + content + '</div></div>'
+				else content = '<div class="row"><div class="col s1"><input type="checkbox" class="filled-in ' + cls + ' ' + field.children[k].attributes.tagname + '" id="' + field.children[k].attributes.id + '"/><label for="' + field.children[k].attributes.id + '"></div><div class="col s1"></div><div class="col s10">' + content + '</div></div>'
 			}
 			if (attributes[l] == "file") {
 				content = content + ': <input class="' + cls + ' ' + field.children[k].attributes.tagname + '" type="file">'
@@ -50,6 +52,7 @@ function parseProtocol(protocolName) {
 	//storing cards
 	var cards = []
 	var sideMenu = ""
+	var references = ['title', 'equipaments']
 
 	//parse cards from xml
 	var cls = 0
@@ -61,6 +64,7 @@ function parseProtocol(protocolName) {
 				for (k in field.children[j].children) {
 					var value = field.children[j].children[k]
 					var number = value.attributes.number
+					references.push(number)
 					cards.push({'number' : number, 'title' : field.children[j].attributes.title, 'html' : parseHTML(value, cls, number)})
 					cls+=1
 					sideMenu += '<div class="collapsible-body" style="border:0"><div class="row"><div class="col s3 offset-s4"><a class="btn-floating btn waves-effect waves-light teal hoverable" href="#' + number + '"><b>' + number + '</b></a></div></div></div>'
@@ -81,7 +85,7 @@ function parseProtocol(protocolName) {
 				sideMenu += '<li><div class="collapsible-header" style="border:0"><div class="row"><div class="col s3"><a class="btn-floating btn waves-effect waves-light teal hoverable" href="#title"><b>i</b></a></div><div class="col s8 offset-s1"><h5>Overview</h5></div></div></div></li>'
 			}
 			else if (field.name == "equipaments") {
-				title = '<div class="card-content teal white-text"><div class="row"><div class="col s2 l1"><a class="btn-floating btn waves-effect waves-light white teal-text"><b>i</b></a></div><div class="col s8 l10"><span class="card-title"><strong>Materials<strong></span></div></div></div>'
+				title = '<div class="card-content teal white-text"><div class="row"><div class="col s2 l1"><a class="btn-floating btn waves-effect waves-light white teal-text"><b>ii</b></a></div><div class="col s8 l10"><span class="card-title"><strong>Materials<strong></span></div></div></div>'
 				text = '<div id="equipaments" class="card">' + title + text + '</div>'
 				sideMenu += '<li><div class="collapsible-header" style="border:0"><div class="row"><div class="col s3"><a class="btn-floating btn waves-effect waves-light teal hoverable" href="#equipaments"><b>i</b></a></div><div class="col s8 offset-s1"><h5>Materials</h5></div></div></div></li>'
 			}
@@ -91,7 +95,7 @@ function parseProtocol(protocolName) {
 	}
 
 	//console.log(cards)
-	return [sideMenu, cards]
+	return [sideMenu, cards, references]
 }
 
 module.exports = {
