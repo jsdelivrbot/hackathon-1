@@ -24,7 +24,7 @@
 		<item type="next">Next</item>
 	</equipaments>
 	<steps>
-		<group number="1" title="Nome Passo 1">
+		<group number="1" title="Prepare Lysate">
 			<step number="1.1">
 				<item>Transfer 1.5ml of bacterial culture to a 1.5ml microcentrifuge tube.</item>
 				<item type="line"></item>
@@ -45,17 +45,86 @@
 				<item type="next">Next</item>
 				<!--<item type="text">Text Passo 3</item>-->
 			</step>
-		</group>
-		<group number="2" title="Nome Passo 2">
-			<step number="2.1">
+			<step number="1.4">
 				<item>Resuspend the cell pellet in 600μl of TE buffer or water.</item>
 				<item type="line"></item>
 				<item type="next">Next</item>
+				<!--<item type="text">Text Passo 3</item>-->
+			</step>
+			<step number="1.5">
+				<item>Add 100μl of Cell Lysis Buffer, and mix by inverting the tube 6 times. The solution should change from opaque to clear blue, indicating complete lysis.</item>
+				<item type="line"></item>
+				<item type="warning">Excessive lysis can result in denatured plasmid DNA. If processing a large number of samples, process samples in groups of ten or less. Continue with the next set of ten samples after the first set has been neutralized and mixed thoroughly.</item>
+				<item type="line"></item>
+				<item type="timer">Proceed to Step 1.6 within 2 minutes.</item>
+				<item type="line"></item>
+				<item type="next">Next</item>
+				<!--<item type="text">Text Passo 3</item>-->
+			</step>
+			<step number="1.6">
+				<item>Add 350μl of cold (4–8°C) Neutralization Solution, and mix thoroughly by inverting the tube. The sample will turn yellow when the neutralization is complete, and a yellow precipitate will form. Invert the sample an additional 3 times to ensure complete neutralization.</item>
+				<item type="line"></item>
+				<item type="next">Next</item>
+				<!--<item type="text">Text Passo 3</item>-->
+			</step>
+			<step number="1.7">
+				<item>Centrifuge at maximum speed in a microcentrifuge for 3 minutes. Place a PureYieldTM Minicolumn on a Luer-Lok® adapter of a VacMan® or VacMan® Jr. Laboratory Vacuum Manifold.</item>
+				<item type="line"></item>
+				<item type="timer">Start timer: 3 minutes.</item>
+				<item type="next">Next</item>
+				<!--<item type="text">Text Passo 3</item>-->
+			</step>
+			<step number="1.8">
+				<item>Transfer the supernatant (~900μl) into a PureYieldTM Minicolumn.</item>
+				<item type="line"></item>
+				<item type="warning">Do not disturb the cell debris pellet.</item>
+				<item type="next">Next</item>
+				<!--<item type="text">Text Passo 3</item>-->
+			</step>
+			<step number="1.9">
+				<item>Apply vacuum to pull the lysate through the column.</item>
+				<item type="line"></item>
+				<item type="next">Next</item>
+				<!--<item type="text">Text Passo 3</item>-->
 			</step>
 		</group>
-		<group number="3" title="Nome Passo 2">
+		<group number="2" title="Wash">
 			<step number="2.1">
-				<item>Descrição Passo 4</item>
+				<item>Add 200μl of Endotoxin Removal Wash to the minicolumn. Allow the vacuum to pull the solution through the column.</item>
+				<item type="line"></item>
+				<item type="next">Next</item>
+			</step>
+			<step number="2.2">
+				<item>Add 400μl of Column Wash Solution to the minicolumn. Allow the vacuum to pull the solution through the column. Release the vacuum, and remove the PureYieldTM Minicolumn.</item>
+				<item type="line"></item>
+				<item type="next">Next</item>
+			</step>
+
+		</group>
+		<group number="3" title="Elute">
+			<step number="3.1">
+				<item>Place the column in a PureYieldTM Collection Tube, and centrifuge at maximum speed in a microcentrifuge for 1 minute.</item>
+				<item type="line"></item>
+				<item type="timer">Start timer: 1 minute.</item>
+				<item type="line"></item>
+				<item type="next">Next</item>
+			</step>
+			<step number="3.2">
+				<item></item>
+				<item>Transfer the minicolumn to a clean 1.5 ml microcentrifuge tube, then add 30μl of Elution Buffer directly to the minicolumn matrix. Let stand for 1 minute at room temperature.</item>
+				<item type="line"></item>
+				<item type="warning">Nuclease-free water at neutral pH can also be used to elute the DNA.</item>
+				<item type="line"></item>
+				<item type="timer">Start timer: 1 minute.</item>
+				<item type="line"></item>
+				<item type="next">Next</item>
+			</step>
+			<step number="3.3">
+				<item>Centrifuge at maximum speed in a microcentrifuge for 15 seconds to elute the plasmid DNA. Cap the microcentrifuge tube, and store eluted plasmid DNA at –20°C.</item>
+				<item type="line"></item>
+				<item type="timer">Start timer: 15 seconds.</item>
+				<item type="line"></item>
+				<item type="next">Finish</item>
 			</step>
 		</group>
 	</steps>
