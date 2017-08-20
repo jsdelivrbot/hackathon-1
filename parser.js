@@ -39,11 +39,13 @@ for (i in obj.root.children) {
 	var field = obj.root.children[i]
 	if (field.name == "steps") {
 		for (j in field.children) {
-			cards.push(parseHTML(field.children[j]))
+			cards.push({'number' : field.children[j].attributes.number, 'title' : field.children[j].attributes.title, 'html' : parseHTML(field.children[j])})
+			//cardsHTML.push(parseHTML(field.children[j]))
 		}
 	}
 	else {
-		cards.push(parseHTML(field))
+		cards.push({'title' : field.attributes.title, 'html' : parseHTML(field)})
+		//cardsHTML.push(parseHTML(field))
 	}
 }
 
