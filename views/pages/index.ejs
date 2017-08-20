@@ -1,137 +1,84 @@
 <html>
-<head>
-<title>teste</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
-<link rel="stylesheet" href="/css/index.css">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<style>
-	.side-nav li.active {
-		background-color: transparent;
-	}
-</style>
-</head>
 
-<script language = "javascript" type = "text/javascript">
+	<head>
 
-var order
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+		<link rel="stylesheet" href="/css/profile.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-var navigationFn = {
-    goToSection: function(id) {
-        $('html, body').animate({
-            scrollTop: $(id).offset().top
-        }, 0);
-    }
-}
+	</head>
 
-$.post("/", {load: "protocol1"}, function(data, status){
-	console.log("Data: " + data + "\nStatus: " + status);
-	var text = ""
-	for (i in data[1]) {
-		text += '<div class="row"></div><!-- CARD: OVERVIEW --><div class="row">' + data[1][i].html + '</div>'
-	}
-	document.getElementById("cardsView").innerHTML=text;
-	document.getElementById("sideBar").innerHTML=data[0];
-	order = data[2]
-	console.log(JSON.stringify(data))
-});
+	<body>
 
-function hasClass(element, cls) {
-    return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
-}
+		<header>
 
-function check(x) {
-	var lista = document.getElementsByClassName(x);
+      <nav>
+        <div class="nav-wrapper teal">
+          <a href="#" class="brand-logo center">Digital Experiments</a>
+          <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+        </div>
 
-	for (var i = 0; i < lista.length; i++) {
-		if (lista[i].type == "checkbox") {
-			if (!lista[i].checked && hasClass(lista[i], "mandatory")) return;
-		}
-		else if (lista[i].type == "file") {
-			if (lista[i].value == "" && hasClass(lista[i], "mandatory")) return;
-			var file = lista[i].files[0];
-			var reader = new FileReader();
-			var result;
-			reader.readAsDataURL(file);
-			reader.onload = function() {
-				result = reader.result;
-				$.post("/", {depois: result}, function(data, status){
-				console.log("Data: " + data + "\nStatus: " + status);
-				console.log(JSON.stringify(data))
-			});
-			}
-		}
-		else if (lista[i].type == "text") {
-			if (!lista[i].value && hasClass(lista[i], "mandatory")) return;
-			$.post("/", {depois: lista[i].value}, function(data, status){
-				console.log("Data: " + data + "\nStatus: " + status);
-				console.log(JSON.stringify(data))
-			});
-		}
-	}
+      </nav>
 
-	console.log($(order[Number(x)+1]))
-	navigationFn.goToSection('#' +  order[Number(x)+1]);
-}
+    </header>
 
-</script>
-<body>
+    <main>
 
-<header>
-<nav class="top-nav fixed">
-<div class="nav-wrapper teal">
-<a href="#" class="brand-logo center" style="font-size:3vmin;"><b>Pure Yield™ Plasmid Miniprep System</b></a>
-<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-<a class="btn waves-effect waves-light teal hoverable" href="about.html" style="width:10%; left:80%; top:25%; margin-top: 0">sobre</a>	
-</div>
-</nav>
+      <div class="container">
+        <ul id="slide-out" class="side-nav fixed teal z-depth-4">
+          <li>
+            <div class="user-profile teal">
+              <div class="row">
+              </div>
+              <div class="row">
+                <div class="center-align">
+                  <a href="#!user"><img class="circle responsive horevable" width="150" src="/images/profile.png"></a>
+                </div>
+                <div class="row">
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="white"><a href="#!"><i class="material-icons" style="color:teal">person</i>Marcela Ribeiro</a></li>
+          <div class="divider"></div>
+          <li class="white"><a href="#!"><i class="material-icons" style="color:teal">account_balance</i>University of São Paulo</a></li>
+          <div class="divider"></div>
+          <li class="white"><a href="#!"><i class="material-icons" style="color:teal">school</i>Biology Department</a></li>
+          <div class="divider"></div>
+          <li class="white"><a href="#!"><i class="material-icons" style="color:teal">book</i>Undergraduate Student</a></li>
+        </ul>
+      </div>
 
-<div class="side-nav fixed grey-text text-darken-4" id="mobile-demo">
-<div class="row">
-<div class="col s12">
-<div class="row">
-</div>
 
-<!-- DYNAMIC DATA-->
+      <div class="center-align">
+        <div class="row">
+        </div>
+        <div class="row">
+        </div>
+        <div class="row">
+        </div>
+        <h3 style="color:teal">Handwritten Lab Notebooks no more!</h3>
+        <div class="row">
+        </div>
+        <h4 style="color:teal">Embrace the digital era and make experiments faster.</h4>
+        <div class="row">
+        </div>
+        <div class="row">
+        </div>
+        <div class="row">
+        </div>
+        <div class="row">
+        </div>
+        <a href="/projeto.html" class="waves-effect waves-light btn-large pulse"><strong>Try it now</strong></a>
+      </div>
 
-<ul class="collapsible z-depth-0" data-collapsible="expandable" style="border:0;" id="sideBar">
+    </main>
 
-</ul>
-</div>
-</div>
-</div>
+  </body>
 
-</header>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+  <script type="text/javascript" src="/javascript/profile.js"></script>
 
-<main>
-	<div class="row">
-		<!-- MAIN CONTENT -->
-		<div class="col s10 offset-s1 l7 offset-l4" id="cardsView">
-
-		</div>
-	</div>
-</main>
-
-<main>
-
-		<div class="row">
-
-			<!-- MAIN CONTENT -->
-
-			<div class="col s10 offset-s1 l7 offset-l4">
-
-			</div>
-
-		<!-- END MAIN CONTENT -->
-
-		</div>
-
-</main>
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-<script type="text/javascript" src="/javascript/index.js"></script>
-
-</body>
 </html>
