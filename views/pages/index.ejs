@@ -22,38 +22,32 @@ function hasClass(element, cls) {
 function check(x) {
 	var lista = document.getElementsByClassName(x);
 
-	var ret = [];
 	for (var i = 0; i < lista.length; i++) {
 		if (lista[i].type == "checkbox") {
 			if (!lista[i].checked && hasClass(lista[i], "mandatory")) return;
 		}
 		else if (lista[i].type == "file") {
 			if (lista[i].value == "" && hasClass(lista[i], "mandatory")) return;
-			
-			var file = lista[i];
-
-			if (file.files.length) {
-				var reader = new FileReader();
-				reader.onload = function(e) {
-					ret.push({a : e.target.result});
-					console.log(e.target.result)
-				};
-				reader.readAsBinaryString(file.files[0]);
+			var file = lista[i].files[0];
+			var reader = new FileReader();
+			var result;
+			reader.readAsDataURL(file);
+			reader.onload = function() {
+				result = reader.result;
+				$.post("/", {depois: result}, function(data, status){
+				console.log("Data: " + data + "\nStatus: " + status);
+				console.log(JSON.stringify(data))
+			});
 			}
 		}
 		else if (lista[i].type == "text") {
 			if (!lista[i].value && hasClass(lista[i], "mandatory")) return;
-			ret.push({b : lista[i].value});
+			$.post("/", {depois: lista[i].value}, function(data, status){
+				console.log("Data: " + data + "\nStatus: " + status);
+				console.log(JSON.stringify(data))
+			});
 		}
 	}
-	//consertar ret
-	console.log(ret);
-
-	//mandar pro server (deu bom)
-	$.post("/", {depois: ret}, function(data, status){
-			console.log("Data: " + data + "\nStatus: " + status);
-			console.log(JSON.stringify(data))
-	});
 }
 
 </script>
