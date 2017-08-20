@@ -11,6 +11,7 @@
 		<item type="check">Equipamento 5</item>
 	</equipaments>
 	<steps>
+		<group number="1.A" title="Nome Passo 1">
 		<step number="1.A" title="Nome Passo 1">
 			<item>Descrição Passo 1</item>
 			<item type="check">Elemento</item>
