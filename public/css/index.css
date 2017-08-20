@@ -8,6 +8,11 @@ main {
   flex: 1 0 auto;
 }
 
+.brand-logo {
+
+  font-size: 3vmin;
+}
+
 // Class for when element is above threshold
 .pin-top {
   position: relative;
@@ -21,4 +26,8 @@ main {
 // Class for when element is pinned
 .pinned {
   position: fixed !important;
+}
+
+.side-nav li.active {
+background-color: transparent;
 }
