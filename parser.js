@@ -12,7 +12,7 @@ function parseHTML(field, cls, name) {
 		}
 		for (l in attributes) {
 			if (attributes[l] == "check") {
-				content = '<input class="' + cls + '"type="checkbox">' + content + ''
+				content = '<input class="' + cls + '" mandatory="' + field.children[k].attributes.mandatory + '" type="checkbox">' + content
 			}
 			if (attributes[l] == "video") {
 				content = '<iframe width="560" height="315" src="' + content + '" frameborder="0" allowfullscreen></iframe>'
@@ -21,10 +21,10 @@ function parseHTML(field, cls, name) {
 				content = '<a href="' + field.children[k].attributes.link + '">' + content + '</a>'
 			}
 			if (attributes[l] == "file") {
-				content = content + ': <input class="' + cls + '"type="file">'
+				content = content + ': <input class="' + cls + '" mandatory="' + field.children[k].attributes.mandatory + '" type="file">'
 			}
 			if (attributes[l] == "text") {
-				content = content + ': <input class="' + cls + '"type="text">'
+				content = content + ': <input class="' + cls + '" mandatory="' + field.children[k].attributes.mandatory + '" type="text">'
 			}
 		}
 		htmlCard += content + '</br>\n';
@@ -47,7 +47,8 @@ function parseProtocol(protocolName) {
 		var field = obj.root.children[i]
 		if (field.name == "steps") {
 			for (j in field.children) {
-				cards.push({'number' : field.children[j].attributes.number, 'title' : field.children[j].attributes.title, 'html' : parseHTML(field.children[j], cls)})
+				for (k in field.children[j].children)
+				cards.push({'number' : field.children[j].children[k].attributes.number, 'title' : field.children[j].attributes.title, 'html' : parseHTML(field.children[j].children[k], cls)})
 				cls++
 				//cardsHTML.push(parseHTML(field.children[j]))
 			}
@@ -68,4 +69,4 @@ module.exports = {
 	parseProtocol : parseProtocol
 }
 
-//parseProtocol("protocol1")
+parseProtocol("protocol1")
