@@ -58,7 +58,7 @@ function parseProtocol(protocolName) {
 	//storing cards
 	var cards = []
 	var sideMenu = ""
-	var references = ['title', 'equipaments']
+	var references = ['0', '1']
 
 	//parse cards from xml
 	var cls = 0
@@ -70,11 +70,11 @@ function parseProtocol(protocolName) {
 				for (k in field.children[j].children) {
 					var value = field.children[j].children[k]
 					var number = value.attributes.number
-					var title = '<div id = "'+number+'"class="card"><div class="card-content teal white-text"><div class="row"><div class="col s2 l1"><a class="btn-floating btn waves-effect waves-light white teal-text"><b>' + number + '</b></a></div><div class="col s6 l7"><span class="card-title"><strong>' + field.children[j].attributes.title + '<strong></span></div><div class="col s1"><i class="material-icons">add_a_photo</i></div><div class="col s1"><i class="material-icons">keyboard_voice</i></div><div class="col s1"><i class="material-icons">format_color_text</i></div><div class="col s1"><i class="material-icons">question_answer</i></div></div></div>'
-					references.push(number)
+					var title = '<div id = "'+cls+'" class="card"><div class="card-content teal white-text"><div class="row"><div class="col s2 l1"><a class="btn-floating btn waves-effect waves-light white teal-text"><b>' + number + '</b></a></div><div class="col s6 l7"><span class="card-title"><strong>' + field.children[j].attributes.title + '<strong></span></div><div class="col s1"><i class="material-icons">add_a_photo</i></div><div class="col s1"><i class="material-icons">keyboard_voice</i></div><div class="col s1"><i class="material-icons">format_color_text</i></div><div class="col s1"><i class="material-icons">question_answer</i></div></div></div>'
+					references.push(cls)
 					cards.push({'number' : number, 'title' : field.children[j].attributes.title, 'html' : title + parseHTML(value, cls, number) + '</div>'})
+					sideMenu += '<div class="collapsible-body" style="border:0"><div class="row"><div class="col s3 offset-s4"><a class="btn-floating btn waves-effect waves-light teal hoverable" href="#' + cls + '"><b>' + number + '</b></a></div></div></div>'
 					cls+=1
-					sideMenu += '<div class="collapsible-body" style="border:0"><div class="row"><div class="col s3 offset-s4"><a class="btn-floating btn waves-effect waves-light teal hoverable" href="#' + number + '"><b>' + number + '</b></a></div></div></div>'
 					//console.log(sideMenu)
 				}
 				sideMenu += '<li>'
@@ -84,19 +84,19 @@ function parseProtocol(protocolName) {
 		else {
 			var text = parseHTML(field, cls, field.name)
 			var title
-			cls+=1
 			if (field.name == "info") {
 				title = '<div class="row"><div class="col s1"><i class="material-icons">business</i></div><div class="col s2"><b>' + field.attributes.business + '</b></div><div class="col s1"><i class="material-icons">timer</i></div><div class="col s2"><b>' + field.attributes.timer + '</b></div><div class="col s1"><i class="material-icons">remove_red_eye</i></div><div class="col s3"><b>' + field.attributes.views + '</b></div><div class="col s1"><i class="material-icons">star</i></div><div class="col s1"><b>' + field.attributes.stars + '</b></div></div>'
 				title = '<div class="card-content teal white-text"><div class="row"><div class="col s2 l1"><a class="btn-floating btn waves-effect waves-light white teal-text"><b>i</b></a></div><div class="col s8 l10"><span class="card-title"><strong>Overview<strong></span></div></div>' + title + '</div>'
-				text = '<div id="title" class="card">' + title + text + '</div>'
-				sideMenu += '<li><div class="collapsible-header" style="border:0"><div class="row"><div class="col s3"><a class="btn-floating btn waves-effect waves-light teal hoverable" href="#title"><b>i</b></a></div><div class="col s8 offset-s1"><h5>Overview</h5></div></div></div></li>'
+				text = '<div id="0" class="card">' + title + text + '</div>'
+				sideMenu += '<li><div class="collapsible-header" style="border:0"><div class="row"><div class="col s3"><a class="btn-floating btn waves-effect waves-light teal hoverable" href="#0"><b>i</b></a></div><div class="col s8 offset-s1"><h5>Overview</h5></div></div></div></li>'
 			}
 			else if (field.name == "equipaments") {
 				title = '<div class="card-content teal white-text"><div class="row"><div class="col s2 l1"><a class="btn-floating btn waves-effect waves-light white teal-text"><b>ii</b></a></div><div class="col s8 l10"><span class="card-title"><strong>Materials<strong></span></div></div></div>'
-				text = '<div id="equipaments" class="card">' + title + text + '</div>'
-				sideMenu += '<li><div class="collapsible-header" style="border:0"><div class="row"><div class="col s3"><a class="btn-floating btn waves-effect waves-light teal hoverable" href="#equipaments"><b>ii</b></a></div><div class="col s8 offset-s1"><h5>Materials</h5></div></div></div></li>'
+				text = '<div id="1" class="card">' + title + text + '</div>'
+				sideMenu += '<li><div class="collapsible-header" style="border:0"><div class="row"><div class="col s3"><a class="btn-floating btn waves-effect waves-light teal hoverable" href="#1"><b>ii</b></a></div><div class="col s8 offset-s1"><h5>Materials</h5></div></div></div></li>'
 			}
 			cards.push({'title' : field.attributes.title, 'html' : text})
+			cls+=1
 			//cardsHTML.push(parseHTML(field))
 		}
 	}
