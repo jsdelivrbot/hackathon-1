@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project title="Título do Protocolo">
 	<info title="Título do Protocolo">
-		<item type="video" mandatory="false">https://www.youtube.com/embed/s86-Z-CbaHA</item>
+		<item type="video" tagname="">https://www.youtube.com/embed/s86-Z-CbaHA</item>
 	</info>
 	<equipaments title="Equipamentos">
-		<item type="check" mandatory="true">Equipamento 1</item>
-		<item type="check" mandatory="true">Equipamento 2</item>
-		<item type="check" mandatory="true">Equipamento 3</item>
-		<item type="check" mandatory="true">Equipamento 4</item>
-		<item type="check" mandatory="false">Equipamento 5</item>
+		<item type="check" tagname="mandatory">Equipamento 1</item>
+		<item type="check" tagname="mandatory">Equipamento 2</item>
+		<item type="check" tagname="mandatory">Equipamento 3</item>
+		<item type="check" tagname="mandatory">Equipamento 4</item>
+		<item type="check" tagname="">Equipamento 5</item>
 	</equipaments>
 	<steps>
 		<group number="1" title="Nome Passo 1">
 			<step number="1.A">
 				<item>Descrição Passo 1</item>
-				<item type="check" mandatory="true">Elemento</item>
+				<item type="check" tagname="mandatory">Elemento</item>
 			</step>
 			<step number="1.B">
 				<item>Descrição Passo 2</item>
 			</step>
 			<step number="1.C">
 				<item>Descrição Passo 3</item>
-				<item type="file" mandatory="true">File Passo 3</item>
+				<item type="file" tagname="mandatory">File Passo 3</item>
 				<!--<item type="text">Text Passo 3</item>-->
 			</step>
 		</group>
