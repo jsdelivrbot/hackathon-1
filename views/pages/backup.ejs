@@ -31,7 +31,7 @@ function check(x) {
 			if (file.files.length) {
 				var reader = new FileReader();
 				reader.onload = function(e) {
-					ret.push(e.target.result);
+					ret.push({a : e.target.result});
 					console.log(e.target.result)
 				};
 				reader.readAsBinaryString(file.files[0]);
@@ -39,7 +39,7 @@ function check(x) {
 		}
 		else if (lista[i].type == "text") {
 			if (!lista[i].value) return;
-			ret.push(lista[i].value);
+			ret.push({b : lista[i].value});
 		}
 	}
 	//consertar ret

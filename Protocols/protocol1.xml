@@ -21,7 +21,7 @@
 		<step number="1.C" title="Nome Passo 3">
 			<item>Descrição Passo 3</item>
 			<item type="file">File Passo 3</item>
-			<item type="text">Text Passo 3</item>
+			<!--<item type="text">Text Passo 3</item>-->
 		</step>
 		<step number="2" title="Nome Passo 4">
 			<item>Descrição Passo 4</item>
