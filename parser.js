@@ -34,6 +34,12 @@ function parseHTML(field, cls, id) {
 			if (attributes[l] == "line") {
 				content = '<div class="row"></div><div class="divider"></div><div class="row"></div>'
 			}
+			if (attributes[l] == "timer") {
+				content = '<div class="row"><div class="col s1"><a class="btn-floating btn waves-effect waves-light red hovarable"><b><i class="material-icons">timer</i></b></a></div><div class="col s11"><p>' + content + '</p></div></div>'
+			}
+			if (attributes[l] == "warning") {
+				content = '<div class="row"><div class="col s1"><a class="btn-floating btn waves-effect waves-light red hovarable"><b><i class="material-icons">warning</i></b></a></div><div class="col s11"><p>' + content + '</p></div></div>'
+			}
 		}
 		if (attributes.length == 0) {
 			content = '<p>' + content + '</p>'
@@ -64,8 +70,9 @@ function parseProtocol(protocolName) {
 				for (k in field.children[j].children) {
 					var value = field.children[j].children[k]
 					var number = value.attributes.number
+					var title = '<div class="card"><div class="card-content teal white-text"><div class="row"><div class="col s2 l1"><a class="btn-floating btn waves-effect waves-light white teal-text"><b>' + number + '</b></a></div><div class="col s6 l7"><span class="card-title"><strong>' + field.children[j].attributes.title + '<strong></span></div><div class="col s1"><i class="material-icons">add_a_photo</i></div><div class="col s1"><i class="material-icons">keyboard_voice</i></div><div class="col s1"><i class="material-icons">format_color_text</i></div><div class="col s1"><i class="material-icons">question_answer</i></div></div></div>'
 					references.push(number)
-					cards.push({'number' : number, 'title' : field.children[j].attributes.title, 'html' : parseHTML(value, cls, number)})
+					cards.push({'number' : number, 'title' : field.children[j].attributes.title, 'html' : title + parseHTML(value, cls, number) + '</div>'})
 					cls+=1
 					sideMenu += '<div class="collapsible-body" style="border:0"><div class="row"><div class="col s3 offset-s4"><a class="btn-floating btn waves-effect waves-light teal hoverable" href="#' + number + '"><b>' + number + '</b></a></div></div></div>'
 					//console.log(sideMenu)

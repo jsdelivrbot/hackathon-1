@@ -25,20 +25,27 @@
 	</equipaments>
 	<steps>
 		<group number="1" title="Nome Passo 1">
-			<step number="1.A">
-				<item>Descrição Passo 1</item>
-				<item type="check" tagname="mandatory">Elemento</item>
+			<step number="1.1">
+				<item>Transfer 1.5ml of bacterial culture to a 1.5ml microcentrifuge tube.</item>
+				<item type="line"></item>
+				<item type="timer">Teste Timer</item>
+				<item type="warning">Teste Warning</item>
+				<item type="next">Next</item>
 			</step>
-			<step number="1.B">
+			<step number="1.2">
 				<item>Descrição Passo 2</item>
 			</step>
-			<step number="1.C">
+			<step number="1.3">
 				<item>Descrição Passo 3</item>
-				<item type="file" tagname="mandatory">File Passo 3</item>
 				<!--<item type="text">Text Passo 3</item>-->
 			</step>
 		</group>
 		<group number="2" title="Nome Passo 2">
+			<step number="2.1">
+				<item>Descrição Passo 4</item>
+			</step>
+		</group>
+		<group number="3" title="Nome Passo 2">
 			<step number="2.1">
 				<item>Descrição Passo 4</item>
 			</step>

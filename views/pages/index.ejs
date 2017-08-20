@@ -70,14 +70,6 @@ function check(x) {
 			});
 		}
 	}
-	//consertar ret
-	console.log(ret);
-
-	//mandar pro server (deu bom)
-	$.post("/", {depois: ret}, function(data, status){
-			console.log("Data: " + data + "\nStatus: " + status);
-			console.log(JSON.stringify(data))
-	});
 
 	console.log(order[Number(x)+1])
 	navigationFn.goToSection('#' +  order[Number(x)+1]);
