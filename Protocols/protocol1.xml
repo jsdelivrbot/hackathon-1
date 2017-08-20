@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project title="Título do Protocolo">
-	<info title="Título do Protocolo">
-		<item type="video" tagname="">https://www.youtube.com/embed/s86-Z-CbaHA</item>
+	<info title="Título do Protocolo" business="Promega" timer="10 min" views="513 views" stars="8.7">
+		<item>The PureYieldTM Plasmid Miniprep System(a) isolates high-quality plasmid DNA for use in eukaryotic transfection and
+				in vitro expression experiments. The system provides a rapid method to purify plasmid DNA using a silica-membrane
+				column. Plasmid DNA can be purifi ed in less than 10 minutes, depending on the number of samples processed, greatly
+				reducing the time spent compared to silica resin or other membrane column methods.For more information, check the
+				complete protocol on the button below.</item>
+		<item type="link" link="https://www.promega.com.br/-/media/files/resources/protocols/technical-bulletins/101/pureyield-plasmid-miniprep-system-protocol.pdf">Protocol</item>
+		<item type="line"></item>
+		<item type="video" tagname="">http://dngkkzi55e3lb.cloudfront.net/protocol/VPA1221/VPA1221_1303.mp4</item>
+		<item type="line"></item>
+		<item type="next">Iniciar</item>
 	</info>
 	<equipaments title="Equipamentos">
 		<item type="check" tagname="mandatory">Equipamento 1</item>

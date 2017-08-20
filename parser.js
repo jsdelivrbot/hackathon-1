@@ -11,42 +11,36 @@ function parseHTML(field, cls, id) {
 			attributes = field.children[k].attributes.type.split(";")
 		}
 		for (l in attributes) {
+			if (attributes[l] == "video") {
+				content = '<div class="video-container"><iframe width="853" height="480" src="' + content + '" frameborder="0" allowfullscreen></iframe></div>'
+			}
+			if (attributes[l] == "link") {
+				content = '<div class="center-align"><a class="waves-effect waves-light btn" href="' + field.children[k].attributes.link + '">' + content + '</a></div>'
+			}	
 			if (attributes[l] == "check") {
 				content = '<input class="' + cls + ' ' + field.children[k].attributes.tagname + '" type="checkbox">' + content
 			}
-			if (attributes[l] == "video") {
-				content = '<iframe width="560" height="315" src="' + content + '" frameborder="0" allowfullscreen></iframe>'
-			}
-			if (attributes[l] == "link") {
-				content = '<a href="' + field.children[k].attributes.link + '">' + content + '</a>'
-			}	
 			if (attributes[l] == "file") {
 				content = content + ': <input class="' + cls + ' ' + field.children[k].attributes.tagname + '" type="file">'
 			}
 			if (attributes[l] == "text") {
 				content = content + ': <input class="' + cls + ' ' + field.children[k].attributes.tagname + '" type="text">'
 			}
+			if (attributes[l] == "next") {
+				content = '<div class="center-align"><a class="waves-effect waves-light btn" onclick="check(' +"'" + cls + "'" + ')">' + content + '</a></div>'
+			}
+			if (attributes[l] == "line") {
+				content = '<div class="row"></div><div class="divider"></div><div class="row"></div>'
+			}
 		}
-		htmlCard += content + '</br>\n';
+		if (attributes.length == 0) {
+			content = '<p>' + content + '</p>'
+		}
+		htmlCard += content;
 	}
 	//transform into form
-	return '<form id="'+ id +'">' + htmlCard + '<input type="button" value="próximo" onclick="check(' +"'" + cls + "'" + ')"></br>\n</form>\n';
+	return '<div class="card-action">' + htmlCard + '</div>';
 }
-
-/*
-<li>
-	<div class="collapsible-header" style="border:0">
-		<div class="row">
-			<div class="col s3">
-				<a class="btn-floating btn waves-effect waves-light teal hoverable" href="#title"><b>i</b></a>
-			</div>
-			<div class="col s8 offset-s1">
-				<h5>Resumo</h5>
-			</div>
-		</div>
-	</div>
-</li>
-*/
 
 function parseProtocol(protocolName) {
 	var xml = fs.readFileSync('Protocols/' + protocolName + ".xml", 'utf8')
@@ -77,14 +71,21 @@ function parseProtocol(protocolName) {
 			}
 		}
 		else {
-			cards.push({'title' : field.attributes.title, 'html' : parseHTML(field, cls, field.name)})
+			var text = parseHTML(field, cls, field.name)
+			var title
 			cls+=1
 			if (field.name == "info") {
-				sideMenu += '<li><div class="collapsible-header" style="border:0"><div class="row"><div class="col s3"><a class="btn-floating btn waves-effect waves-light teal hoverable" href="#title"><b>i</b></a></div><div class="col s8 offset-s1"><h5>Resumo</h5></div></div></div></li>'
+				title = '<div class="row"><div class="col s1"><i class="material-icons">business</i></div><div class="col s2"><b>' + field.attributes.business + '</b></div><div class="col s1"><i class="material-icons">timer</i></div><div class="col s2"><b>' + field.attributes.timer + '</b></div><div class="col s1"><i class="material-icons">remove_red_eye</i></div><div class="col s3"><b>' + field.attributes.views + '</b></div><div class="col s1"><i class="material-icons">star</i></div><div class="col s1"><b>' + field.attributes.stars + '</b></div></div>'
+				title = '<div class="card-content teal white-text"><div class="row"><div class="col s2 l1"><a class="btn-floating btn waves-effect waves-light white teal-text"><b>i</b></a></div><div class="col s8 l10"><span class="card-title"><strong>Overview<strong></span></div></div>' + title + '</div>'
+				text = '<div id="title" class="card">' + title + text + '</div>'
+				sideMenu += '<li><div class="collapsible-header" style="border:0"><div class="row"><div class="col s3"><a class="btn-floating btn waves-effect waves-light teal hoverable" href="#title"><b>i</b></a></div><div class="col s8 offset-s1"><h5>Overview</h5></div></div></div></li>'
 			}
 			else if (field.name == "equipaments") {
-				sideMenu += '<li><div class="collapsible-header" style="border:0"><div class="row"><div class="col s3"><a class="btn-floating btn waves-effect waves-light teal hoverable" href="#equipaments"><b>i</b></a></div><div class="col s8 offset-s1"><h5>Materiais</h5></div></div></div></li>'
+				title = '<div class="card-content teal white-text"><div class="row"><div class="col s2 l1"><a class="btn-floating btn waves-effect waves-light white teal-text"><b>i</b></a></div><div class="col s8 l10"><span class="card-title"><strong>Materials<strong></span></div></div></div>'
+				text = '<div id="equipaments" class="card">' + title + text + '</div>'
+				sideMenu += '<li><div class="collapsible-header" style="border:0"><div class="row"><div class="col s3"><a class="btn-floating btn waves-effect waves-light teal hoverable" href="#equipaments"><b>i</b></a></div><div class="col s8 offset-s1"><h5>Materials</h5></div></div></div></li>'
 			}
+			cards.push({'title' : field.attributes.title, 'html' : text})
 			//cardsHTML.push(parseHTML(field))
 		}
 	}
